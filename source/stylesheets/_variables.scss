@@ -20,36 +20,45 @@ under the License.
 ////////////////////////////////////////////////////////////////////////////////
 // Use these settings to help adjust the appearance of Slate
 
+$thn-white: #fff;
+$thn-black: #000;
+$thn-gray-300: #F1F6F6;
+$thn-gray-500: #D9E2E2;
+$thn-gray-900: #293637;
+$thn-primary-300: #CCF5F5;
+$thn-primary-900: #00cccc;
+$thn-warning-300: #FFF3D3;
+$thn-success-300: #CBFAD5;
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #fff !default;
-$examples-bg: #F1F6F6 !default;
-$code-bg: #293637 !default;
-$code-annotation-bg: #D9E2E2 !default;
-$nav-subitem-bg: #fff !default;
-$nav-active-bg: #CCF5F5 !default;
-$nav-active-parent-bg: #F1F6F6 !default; // parent links of the current section
-$lang-select-border: #F1F6F6 !default;
+$nav-bg: $thn-white !default;
+$examples-bg: $thn-gray-300 !default;
+$code-bg: $thn-gray-900 !default;
+$code-annotation-bg: $thn-gray-500 !default;
+$nav-subitem-bg: $thn-white !default;
+$nav-active-bg: $thn-primary-300 !default;
+$nav-active-parent-bg: $thn-gray-300 !default; // parent links of the current section
+$lang-select-border: $thn-gray-300 !default;
 $lang-select-bg: #D9E2E2 !default;
-$lang-select-active-bg: $examples-bg !default; // feel free to change this to blue or something
-$lang-select-pressed-bg: #F1F6F6 !default; // color of language tab bg when mouse is pressed
-$main-bg: #fff !default;
-$aside-notice-bg: #CCF5F5 !default;
-$aside-warning-bg: #FFF3D3 !default;
-$aside-success-bg: #CBFAD5 !default;
-$search-notice-bg: #FFF3D3 !default;
+$lang-select-active-bg: $thn-gray-300 !default; // feel free to change this to blue or something
+$lang-select-pressed-bg: $thn-gray-300 !default; // color of language tab bg when mouse is pressed
+$main-bg: $thn-white !default;
+$aside-notice-bg: $thn-primary-300 !default;
+$aside-warning-bg: $thn-warning-300 !default;
+$aside-success-bg: $thn-success-300 !default;
+$search-notice-bg: $thn-warning-300 !default;
 
 
 // TEXT COLORS
 ////////////////////
-$main-text: #000000 !default; // main content text color
-$nav-text: #000000 !default;
-$nav-active-text: #000000 !default;
-$nav-active-parent-text: #000000 !default; // parent links of the current section
-$lang-select-text: #000000 !default; // color of unselected language tab text
-$lang-select-active-text: #000000 !default; // color of selected language tab text
-$lang-select-pressed-text: #000000 !default; // color of language tab text when mouse is pressed
+$main-text: $thn-black !default; // main content text color
+$nav-text: $thn-black !default;
+$nav-active-text: $thn-black !default;
+$nav-active-parent-text: $thn-black !default; // parent links of the current section
+$lang-select-text: $thn-black !default; // color of unselected language tab text
+$lang-select-active-text: $thn-black !default; // color of selected language tab text
+$lang-select-pressed-text: $thn-black !default; // color of language tab text when mouse is pressed
 
 
 // SIZES
@@ -88,8 +97,8 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 
 // OTHER
 ////////////////////
-$nav-footer-border-color: #F1F6F6 !default;
-$search-box-border-color: #F1F6F6 !default;
+$nav-footer-border-color: $thn-gray-300 !default;
+$search-box-border-color: $thn-gray-300 !default;
 
 
 ////////////////////////////////////////////////////////////////////////////////
