@@ -375,6 +375,7 @@ html, body {
   h1:first-child, div:first-child + h1 {
     border-top-width: 0;
     margin-top: 0;
+    padding-top: 2em;
   }
 
   h2 {
@@ -415,7 +416,6 @@ html, body {
     margin-bottom: 1em;
     overflow: auto;
     th,td {
-      font-weight: 300;
       text-align: left;
       vertical-align: top;
       line-height: 1.6;
@@ -425,12 +425,14 @@ html, body {
     }
 
     th {
+      font-weight: 500;
       padding: 5px 10px;
       border-bottom: 1px solid $examples-bg;
       vertical-align: bottom;
     }
 
     td {
+      font-weight: 300;
       padding: 10px;
     }
 
@@ -542,8 +544,6 @@ html, body {
     clear:none;
   }
 
-  pre, blockquote { display: none }
-
   .pre-wrap {
     margin-top: 1px;
     width: $examples-width;
@@ -551,16 +551,15 @@ html, body {
     float:right;
     clear:right;
     box-sizing: border-box;
+    @extend %right-col;
     
     pre, blockquote {
-      display: block;
       color: $thn-white;
       width: 100%;
       margin: 0;
   
       box-sizing: border-box;
   
-      @extend %right-col;
   
       &>p { margin: 0; }
   
@@ -572,6 +571,8 @@ html, body {
     }
   
     pre {
+      max-height: 280px;
+      overflow-y: scroll;
       border-radius: 8px;
       background-color: $code-bg;
       @extend %code-font;
@@ -623,6 +624,21 @@ html, body {
 }
 
 @media (max-width: $phone-width) {
+  .aside-wrap {
+    width: 100% !important;
+  }
+
+  .highlight {
+    margin-bottom: 14px;
+    margin-left: $main-padding;
+    margin-right: $main-padding;
+    border-radius: 8px;
+
+    .pre-wrap {
+      padding: 0;
+    }
+  }
+
   .dark-box {
     display: none;
   }
