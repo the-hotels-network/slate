@@ -9,9 +9,6 @@ function adjustLanguageSelectorWidth() {
 }
 
 $(function() {
-  $('aside').wrap('<div class="aside-wrap"></div>');
-  $('pre, blockquote').wrap('<div class="pre-wrap"></div>');
-  $('.index').css('opacity', '1');
   loadToc($('#toc'), '.toc-link', '.toc-list-h2', 10);
   setupLanguages($('body').data('languages'));
   $('.content').imagesLoaded( function() {
@@ -23,6 +20,10 @@ $(function() {
     adjustLanguageSelectorWidth();
   });
   adjustLanguageSelectorWidth();
+  $('aside').wrap('<div class="aside-wrap"></div>');
+  $('pre[style="display: none;"]:parent').remove();
+  $('pre, blockquote').wrap('<div class="pre-wrap"></div>');
+  $('.index').css('opacity', '1');
 });
 
 
