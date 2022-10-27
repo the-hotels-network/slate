@@ -21,7 +21,6 @@ $(function() {
   });
   adjustLanguageSelectorWidth();
   $('aside').wrap('<div class="aside-wrap"></div>');
-  $('pre[style="display: none;"]:parent').remove();
   $('pre, blockquote').wrap('<div class="pre-wrap"></div>');
   $('.index').css('opacity', '1');
 });
