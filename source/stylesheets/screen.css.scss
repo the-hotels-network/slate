@@ -571,7 +571,7 @@ html, body {
     }
   
     pre {
-      max-height: 280px;
+      max-height: calc(100vh - 200px);
       overflow-y: scroll;
       border-radius: 8px;
       background-color: $code-bg;
