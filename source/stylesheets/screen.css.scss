@@ -321,6 +321,11 @@ html, body {
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff with the light background in the left half of the page
 
+.index {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
 .content {
   // fixes webkit rendering bug for some: see #538
   -webkit-transform: translateZ(0);
@@ -474,41 +479,49 @@ html, body {
     padding: 0;
   }
 
-  aside {
-    font-weight: 300;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin-top: 1.5em;
+  .aside-wrap {
+    width: 50%;
+    clear: none;
+    box-sizing: border-box;
+    padding: $main-padding;
     margin-bottom: 1.5em;
-    background: $aside-notice-bg;
-    line-height: 1.6;
-
-    &.warning {
-      background-color: $aside-warning-bg;
+    margin-top: 1.5em;
+    
+    aside {
+      border-radius: 8px;
+      font-weight: 300;
+      padding: 1em;
+      background: $aside-notice-bg;
+      line-height: 1.6;
+  
+      &.warning {
+        background-color: $aside-warning-bg;
+      }
+  
+      &.success {
+        background-color: $aside-success-bg;
+      }
     }
-
-    &.success {
-      background-color: $aside-success-bg;
+  
+    aside:before {
+      vertical-align: text-top;
+      padding-right: 0.5em;
+      font-size: 16px;
+    }
+  
+    aside.notice:before {
+      @extend %icon-info-sign;
+    }
+  
+    aside.warning:before {
+      @extend %icon-exclamation-sign;
+    }
+  
+    aside.success:before {
+      @extend %icon-ok-sign;
     }
   }
 
-  aside:before {
-    vertical-align: middle;
-    padding-right: 0.5em;
-    font-size: 14px;
-  }
-
-  aside.notice:before {
-    @extend %icon-info-sign;
-  }
-
-  aside.warning:before {
-    @extend %icon-exclamation-sign;
-  }
-
-  aside.success:before {
-    @extend %icon-ok-sign;
-  }
 
   .search-highlight {
     padding: 2px;
@@ -529,42 +542,53 @@ html, body {
     clear:none;
   }
 
-  pre, blockquote {
-    color: #fff;
+  pre, blockquote { display: none }
 
-    margin: 0;
+  .pre-wrap {
+    margin-top: 1px;
     width: $examples-width;
-
+    padding: $main-padding;
     float:right;
     clear:right;
-
     box-sizing: border-box;
-
-    @extend %right-col;
-
-    &>p { margin: 0; }
-
-    a {
+    
+    pre, blockquote {
+      display: block;
       color: #fff;
-      text-decoration: none;
-      border-bottom: dashed 1px #ccc;
+      width: 100%;
+      margin: 0;
+  
+      box-sizing: border-box;
+  
+      @extend %right-col;
+  
+      &>p { margin: 0; }
+  
+      a {
+        color: #fff;
+        text-decoration: none;
+        border-bottom: dashed 1px #ccc;
+      }
     }
-  }
-
-  pre {
-    background-color: $code-bg;
-    @extend %code-font;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    padding: 2em $main-padding;
-  }
-
-  blockquote {
-    &>p {
-      border: none;
-      background-color: $code-annotation-bg;
-      padding: $code-annotation-padding 2em;
-      color: #000;
+  
+    pre {
+      border-radius: 8px;
+      background-color: $code-bg;
+      @extend %code-font;
+      padding-top: 2em;
+      padding-bottom: 2em;
+      padding: 2em $main-padding;
+    }
+  
+    blockquote {
+      &>p {
+        margin-top: 1px;
+        border-radius: 8px;
+        border: none;
+        background-color: $code-annotation-bg;
+        padding: $code-annotation-padding 2em;
+        color: #000;
+      }
     }
   }
 }
