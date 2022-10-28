@@ -49,7 +49,6 @@ html, body {
 
 .toc-wrapper {
   transition: left 0.3s ease-in-out;
-
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
@@ -61,6 +60,7 @@ html, body {
   background-color: $nav-bg;
   font-size: 13px;
   font-weight: bold;
+  border-right: 1px solid #F1F6F6;
 
   // language selector for mobile devices
   .lang-selector {
@@ -71,11 +71,14 @@ html, body {
     }
   }
 
-  // This is the logo at the top of the ToC
-  .logo {
-    display: block;
-    max-width: 100%;
-    margin-bottom: $logo-margin;
+  .logo-wrapper {
+    padding: 2rem 3rem;
+    // This is the logo at the top of the ToC
+    .logo {
+      display: block;
+      max-width: 100%;
+      margin-bottom: $logo-margin;
+    }
   }
 
   &>.search {
@@ -177,7 +180,7 @@ html, body {
   .toc-footer {
     padding: 1em 0;
     margin-top: 1em;
-    border-top: 1px dashed $nav-footer-border-color;
+    border-top: 1px solid $nav-footer-border-color;
 
     li,a {
       color: $nav-text;
@@ -197,7 +200,9 @@ html, body {
 }
 
 .toc-link, .toc-footer li {
-  padding: 0 $nav-padding 0 $nav-padding;
+  border-radius: 8px;
+  padding: 0 $nav-padding;
+  margin: .5rem $nav-padding;
   display: block;
   overflow-x: hidden;
   white-space: nowrap;
@@ -226,7 +231,7 @@ html, body {
   top: 0;
   left: 0;
   z-index: 100;
-  color: #000;
+  color: $thn-black;
   text-decoration: none;
   font-weight: bold;
   opacity: 0.7;
@@ -284,10 +289,11 @@ html, body {
   font-weight: bold;
   overflow-x: auto;
   a {
+    border-top: 2px solid transparent;
     display: inline;
     color: $lang-select-text;
     text-decoration: none;
-    padding: 0 10px;
+    padding: .5rem 1rem;
     line-height: 30px;
     outline: 0;
 
@@ -297,6 +303,7 @@ html, body {
     }
 
     &.active {
+      border-top: 2px solid $thn-primary-900;
       background-color: $lang-select-active-bg;
       color: $lang-select-active-text;
     }
@@ -313,6 +320,11 @@ html, body {
 // CONTENT STYLES
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff with the light background in the left half of the page
+
+.index {
+  opacity: 0;
+  transition: opacity 1s;
+}
 
 .content {
   // fixes webkit rendering bug for some: see #538
@@ -336,6 +348,11 @@ html, body {
     @extend %left-col;
   }
 
+  a {
+    text-decoration: none;
+    color: $thn-primary-900;
+  }
+
   &>ul, &>ol {
     padding-left: $main-padding + 15px;
   }
@@ -352,14 +369,13 @@ html, body {
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
     background-color: #fdfdfd;
   }
 
   h1:first-child, div:first-child + h1 {
     border-top-width: 0;
     margin-top: 0;
+    padding-top: 2em;
   }
 
   h2 {
@@ -367,10 +383,9 @@ html, body {
     font-size: 19px;
     margin-top: 4em;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
-    background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
+    background-image: linear-gradient(to bottom, rgba($thn-white, 0.2), rgba($thn-white, 0));
   }
 
   // h2s right after h1s should bump right up
@@ -410,25 +425,27 @@ html, body {
     }
 
     th {
+      font-weight: 500;
       padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid $examples-bg;
       vertical-align: bottom;
     }
 
     td {
+      font-weight: 300;
       padding: 10px;
     }
 
     tr:last-child {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid $examples-bg;
     }
 
     tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+      background-color: lighten($examples-bg,4.2%);
     }
 
     tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+      background-color: lighten($examples-bg,2.4%);
     }
   }
 
@@ -442,6 +459,7 @@ html, body {
 
   p, li, dt, dd {
     line-height: 1.6;
+    font-weight: 300;
     margin-top: 0;
   }
 
@@ -450,9 +468,10 @@ html, body {
   }
 
   code {
+    font-weight: 500;
     background-color: rgba(0,0,0,0.05);
-    padding: 3px;
-    border-radius: 3px;
+    padding: 4px;
+    border-radius: 4px;
     @extend %break-words;
     @extend %code-font;
   }
@@ -462,40 +481,49 @@ html, body {
     padding: 0;
   }
 
-  aside {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin-top: 1.5em;
+  .aside-wrap {
+    width: 50%;
+    clear: none;
+    box-sizing: border-box;
+    padding: $main-padding;
     margin-bottom: 1.5em;
-    background: $aside-notice-bg;
-    line-height: 1.6;
-
-    &.warning {
-      background-color: $aside-warning-bg;
+    margin-top: 1.5em;
+    
+    aside {
+      border-radius: 8px;
+      font-weight: 300;
+      padding: 1em;
+      background: $aside-notice-bg;
+      line-height: 1.6;
+  
+      &.warning {
+        background-color: $aside-warning-bg;
+      }
+  
+      &.success {
+        background-color: $aside-success-bg;
+      }
     }
-
-    &.success {
-      background-color: $aside-success-bg;
+  
+    aside:before {
+      vertical-align: text-top;
+      padding-right: 0.5em;
+      font-size: 16px;
+    }
+  
+    aside.notice:before {
+      @extend %icon-info-sign;
+    }
+  
+    aside.warning:before {
+      @extend %icon-exclamation-sign;
+    }
+  
+    aside.success:before {
+      @extend %icon-ok-sign;
     }
   }
 
-  aside:before {
-    vertical-align: middle;
-    padding-right: 0.5em;
-    font-size: 14px;
-  }
-
-  aside.notice:before {
-    @extend %icon-info-sign;
-  }
-
-  aside.warning:before {
-    @extend %icon-exclamation-sign;
-  }
-
-  aside.success:before {
-    @extend %icon-ok-sign;
-  }
 
   .search-highlight {
     padding: 2px;
@@ -516,41 +544,52 @@ html, body {
     clear:none;
   }
 
-  pre, blockquote {
-    background-color: $code-bg;
-    color: #fff;
-
-    margin: 0;
+  .pre-wrap {
+    margin-top: 1px;
     width: $examples-width;
-
+    padding: $main-padding;
     float:right;
     clear:right;
-
     box-sizing: border-box;
-
     @extend %right-col;
-
-    &>p { margin: 0; }
-
-    a {
-      color: #fff;
-      text-decoration: none;
-      border-bottom: dashed 1px #ccc;
+    
+    pre, blockquote {
+      color: $thn-white;
+      width: 100%;
+      margin: 0;
+  
+      box-sizing: border-box;
+  
+  
+      &>p { margin: 0; }
+  
+      a {
+        color: $thn-white;
+        text-decoration: none;
+        border-bottom: dashed 1px #ccc;
+      }
     }
-  }
-
-  pre {
-    @extend %code-font;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    padding: 2em $main-padding;
-  }
-
-  blockquote {
-    &>p {
-      background-color: $code-annotation-bg;
-      padding: $code-annotation-padding 2em;
-      color: #eee;
+  
+    pre {
+      max-height: calc(100vh - 200px);
+      overflow-y: scroll;
+      border-radius: 8px;
+      background-color: $code-bg;
+      @extend %code-font;
+      padding-top: 2em;
+      padding-bottom: 2em;
+      padding: 2em $main-padding;
+    }
+  
+    blockquote {
+      &>p {
+        margin-top: 1px;
+        border-radius: 8px;
+        border: none;
+        background-color: $code-annotation-bg;
+        padding: $code-annotation-padding 2em;
+        color: $thn-black;
+      }
     }
   }
 }
@@ -585,6 +624,21 @@ html, body {
 }
 
 @media (max-width: $phone-width) {
+  .aside-wrap {
+    width: 100% !important;
+  }
+
+  .highlight {
+    margin-bottom: 14px;
+    margin-left: $main-padding;
+    margin-right: $main-padding;
+    border-radius: 8px;
+
+    .pre-wrap {
+      padding: 0;
+    }
+  }
+
   .dark-box {
     display: none;
   }
