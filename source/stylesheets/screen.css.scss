@@ -472,7 +472,6 @@ html, body {
     background-color: rgba(0,0,0,0.05);
     padding: 4px;
     border-radius: 4px;
-    @extend %break-words;
     @extend %code-font;
   }
 
@@ -481,18 +480,28 @@ html, body {
     padding: 0;
   }
 
-  .aside-wrap {
+  .aside-wrap, .separator {
     width: 50%;
     clear: none;
     box-sizing: border-box;
-    padding: $main-padding;
-    margin-bottom: 1.5em;
-    margin-top: 1.5em;
-    
+  }
+
+  .separator {
+    padding: 0 $main-padding;
+  }
+  
+  .separator > div{
+    border: 1px solid $thn-gray-300;
+    margin-bottom: 14px;
+  }
+  
+  .aside-wrap {
+    padding: 2px $main-padding 14px;
+
     aside {
       border-radius: 8px;
       font-weight: 300;
-      padding: 1em;
+      padding: .5em 1em;
       background: $aside-notice-bg;
       line-height: 1.6;
   
@@ -524,6 +533,18 @@ html, body {
     }
   }
 
+  span {
+    &.type, &.required {
+      font-weight: 300;
+      font-style: italic;
+    }
+    &.type {
+      color: $thn-gray-900
+    }
+    &.required {
+      color: $thn-danger-500;
+    }
+  }
 
   .search-highlight {
     padding: 2px;
