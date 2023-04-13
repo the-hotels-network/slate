@@ -80,8 +80,8 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 // FONTS
 ////////////////////
 %default-font {
-  font-family: "Avenir LT";
-  font-size: 14px;
+  font-family: "Avenir";
+  font-size: 16px;
 }
 
 %header-font {
@@ -91,7 +91,7 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 
 %code-font {
   font-family: "monospace";
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.5;
 }
 

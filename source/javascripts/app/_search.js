@@ -4,7 +4,7 @@
 ;(function () {
   'use strict';
 
-  var content, searchResults;
+  var content, searchResults, navLinks;
   var highlightOpts = { element: 'span', className: 'search-highlight' };
   var searchDelay = 0;
   var timeoutHandle = 0;
@@ -45,6 +45,7 @@
   function bind() {
     content = $('.content');
     searchResults = $('.search-results');
+    navLinks = $('#toc');
 
     $('#input-search').on('keyup',function(e) {
       var wait = function() {
@@ -65,6 +66,7 @@
 
     unhighlight();
     searchResults.addClass('visible');
+    navLinks.addClass('hidden');
 
     // ESC clears the field
     if (event.keyCode === 27) searchInput.value = '';
@@ -76,6 +78,7 @@
 
       if (results.length) {
         searchResults.empty();
+        searchResults.append("<div class='search-results-title'>Search results</div>");
         $.each(results, function (index, result) {
           var elem = document.getElementById(result.ref);
           searchResults.append("<li><a href='#" + result.ref + "'>" + $(elem).text() + "</a></li>");
@@ -88,6 +91,7 @@
     } else {
       unhighlight();
       searchResults.removeClass('visible');
+      navLinks.removeClass('hidden');
     }
   }
 

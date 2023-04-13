@@ -40,6 +40,13 @@ html, body {
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
 
+#toc {
+  visibility: visible;
+  &.hidden {
+      visibility: hidden;
+  }
+}
+
 #toc > ul > li > a > span {
   float: right;
   background-color: #2484FF;
@@ -104,37 +111,48 @@ html, body {
       color: $nav-text;
       @extend %icon-search;
     }
-  }
 
-  .search-results {
-    margin-top: 0;
-    box-sizing: border-box;
-    height: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    transition-property: height, margin;
-    transition-duration: 180ms;
-    transition-timing-function: ease-in-out;
-    background: $nav-subitem-bg;
-    &.visible {
-      height: 30%;
+    .search-results-title {
+      font-weight: 500;
+      width: 100%;
+      text-align: center;
       margin-bottom: 1em;
     }
 
-    li {
-      margin: 1em $nav-padding;
-      line-height: 1;
-    }
+    .search-results {
+      background-color: $thn-white;
+      width: 100%;
+      position: absolute;
+      margin-top: 0;
+      visibility: hidden;
+      box-sizing: border-box;
+      height: 300px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background: $nav-subitem-bg;
 
-    a {
-      color: $nav-text;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
+      &.visible {
+        visibility: visible;
+        margin-bottom: 1em;
+      }
+  
+      li {
+        margin: 1em $nav-padding;
+        line-height: 1;
+      }
+  
+      a {
+        color: $nav-text;
+        text-decoration: none;
+        font-weight: 300;
+  
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
+
 
 
   // The Table of Contents is composed of multiple nested
