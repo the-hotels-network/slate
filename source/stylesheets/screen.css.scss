@@ -65,7 +65,7 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: bold;
   border-right: 1px solid #F1F6F6;
 
@@ -171,7 +171,7 @@ html, body {
     transition-timing-function: linear;
     transition-duration: 200ms;
   }
-
+  
   // This is the currently selected ToC entry
   .toc-link.active {
     background-color: $nav-active-bg;
@@ -192,7 +192,7 @@ html, body {
 
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .toc-footer {
@@ -219,7 +219,7 @@ html, body {
 
 .toc-link, .toc-footer li {
   border-radius: 8px;
-  padding: 0 $nav-padding;
+  padding: $nav-padding;
   margin: .5rem $nav-padding;
   display: block;
   overflow-x: hidden;
