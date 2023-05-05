@@ -357,7 +357,7 @@ html, body {
     clear: both;
   }
 
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>.table-wrap, &>ul, &>ol, &>aside, &>dl {
     margin-right: $examples-width;
     padding: 0 $main-padding;
     box-sizing: border-box;
@@ -376,7 +376,7 @@ html, body {
   }
 
   // the div is the tocify hidden div for placeholding stuff
-  &>h1, &>h2, &>div {
+  &>h1, &>h2, &>div:not(.table-wrap) {
     clear:both;
   }
 
@@ -430,41 +430,44 @@ html, body {
     border-bottom: 2px solid $main-bg;
   }
 
-  table {
+  .table-wrap {
     margin-bottom: 1em;
-    overflow: auto;
+    .table-content {
+      border-radius: 1rem;
+      box-shadow: 0 0px 0px $thn-gray-700, 0 0px 4px $thn-gray-700;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+    }
+    thead>tr:last-child {
+      border-bottom: 2px solid $thn-primary-900;
+    }
     th,td {
       text-align: left;
       vertical-align: top;
       line-height: 1.6;
+      padding: 12px 16px;
+      min-width: 50px;
       code {
         white-space: nowrap;
       }
     }
 
     th {
-      font-weight: 500;
-      padding: 5px 10px;
+      font-weight: 800;
       border-bottom: 1px solid $examples-bg;
       vertical-align: bottom;
     }
 
     td {
       font-weight: 300;
-      padding: 10px;
     }
 
-    tr:last-child {
-      border-bottom: 1px solid $examples-bg;
+    tbody>tr:not(:last-child) {
+      border-bottom: 1px solid $thn-gray-700;
     }
 
-    tr:nth-child(odd)>td {
-      background-color: lighten($examples-bg,4.2%);
-    }
-
-    tr:nth-child(even)>td {
-      background-color: lighten($examples-bg,2.4%);
-    }
   }
 
   dt {

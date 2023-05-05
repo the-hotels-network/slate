@@ -24,6 +24,7 @@ $thn-white: #fff;
 $thn-black: #000;
 $thn-gray-300: #F1F6F6;
 $thn-gray-500: #D9E2E2;
+$thn-gray-700: #D9D9D9;
 $thn-gray-900: #293637;
 $thn-primary-300: #CCF5F5;
 $thn-primary-900: #00cccc;
@@ -90,8 +91,8 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 }
 
 %code-font {
-  font-family: "monospace";
-  font-size: 16px;
+  font-family: "Menlo Regular";
+  font-size: 14px;
   line-height: 1.5;
 }
 

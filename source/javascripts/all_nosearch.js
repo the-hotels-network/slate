@@ -12,6 +12,7 @@ $(function() {
   loadToc($('#toc'), '.toc-link', '.toc-list-h2', 10);
   $('aside').wrap('<div class="aside-wrap"></div>');
   $('pre, blockquote').wrap('<div class="pre-wrap"></div>');
+  $('.content > table').wrap('<div class="table-wrap"><div class="table-content"></div></div>');
   setupLanguages($('body').data('languages'));
   $('.content').imagesLoaded( function() {
     window.recacheHeights();
