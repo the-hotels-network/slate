@@ -60,7 +60,6 @@ $default: auto;
     &>h5,
     &>h6,
     &>p,
-    &>table,
     &>ul,
     &>ol,
     &>aside,
@@ -73,6 +72,7 @@ $default: auto;
         padding-#{right}: $main-padding + 15px;
     }
     table {
+        width: 100%;
         th,
         td {
             text-align: right;
